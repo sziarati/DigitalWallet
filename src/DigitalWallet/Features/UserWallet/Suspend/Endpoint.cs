@@ -14,7 +14,7 @@ public static class Endpoint
         {
             // TODO: Check data validation vy fluen validation
 
-            await _service.SuspendAsync(Id, ct);
+            await _service.SuspendAsync(WalletId.Create(Id), ct);
 
             // TODO: Use mapster for mapping
             return Results.Ok("Wallet suspended!");

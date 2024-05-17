@@ -9,12 +9,12 @@ public static class Endpoint
     public static IEndpointRouteBuilder AddGetWalletTransactionsEndPoint(this IEndpointRouteBuilder endpoint)
     {
         endpoint.MapGet("/transactions/{wallet-id:guid}", async (
-            [FromRoute(Name = "wallet-id")]Guid WalletId,
+            [FromRoute(Name = "wallet-id")]Guid walletId,
             CancellationToken ct,
             WalletDbContext _dbContext) =>
         {
              
-            return Results.Ok(_dbContext.Transactions.Where(x => x.WalletId == WalletId)
+            return Results.Ok(_dbContext.Transactions.Where(x => x.WalletId == WalletId.Create(walletId))
                                                      .OrderByDescending(x => x.CreatedOn)
                                                      .Select(x => new { 
                                                         CreatedOn = x.CreatedOn,

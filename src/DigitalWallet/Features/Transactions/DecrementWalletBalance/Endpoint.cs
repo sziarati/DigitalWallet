@@ -13,7 +13,7 @@ public static class Endpoint
         {
             // TODO: Check data validation vy fluen validation
 
-            await _service.DecrementBalanceAsync(request.WalletId, request.Amount, request.Description, ct);
+            await _service.DecrementBalanceAsync(WalletId.Create(request.WalletId), request.Amount, request.Description, ct);
 
             // TODO: Use mapster for mapping
             return Results.Ok("wallet balance decreased!");

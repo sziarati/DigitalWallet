@@ -14,7 +14,7 @@ public static class Endpoint
         {
             // TODO: Check data validation vy fluen validation
 
-            await _service.IncrementBalanceAsync(request.WalletId, request.Amount, request.Description, ct);
+            await _service.IncrementBalanceAsync(WalletId.Create(request.WalletId), request.Amount, request.Description, ct);
 
             // TODO: Use mapster for mapping
             return Results.Ok("wallet balance increased!");

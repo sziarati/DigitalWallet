@@ -14,8 +14,8 @@ public static class Endpoint
             // TODO: Check data validation vy fluen validation
 
             await _service.WalletFundsAsync(
-                request.SourceWalletId,
-                request.DestinationWalletId,
+                WalletId.Create(request.SourceWalletId),
+                WalletId.Create(request.DestinationWalletId),
                 request.Amount,
                 request.Description,
                 ct);
